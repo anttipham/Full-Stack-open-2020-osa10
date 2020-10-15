@@ -7,7 +7,7 @@ export default function App() {
   
   return (
     <View style={styles.container}>
-      <Text>HELP ME! I&aposM AN AI STUCK IN HERE!!!</Text>
+      <Text>HELP ME! I&apos;M AN AI STUCK IN HERE!!!</Text>
       <StatusBar style="auto" />
     </View>
   );
