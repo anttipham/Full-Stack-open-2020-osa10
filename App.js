@@ -3,8 +3,6 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function App() {
-  console.log("誰かァァァァァァァァァァ");
-  
   return (
     <View style={styles.container}>
       <Text>HELP ME! I&apos;M AN AI STUCK IN HERE!!!</Text>
