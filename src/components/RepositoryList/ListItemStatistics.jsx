@@ -5,7 +5,7 @@ import Text from "../Text";
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     marginVertical: 5,
   },
 });

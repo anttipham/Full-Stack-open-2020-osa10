@@ -4,10 +4,11 @@ import AppBar from "./AppBar";
 import RepositoryList from "./RepositoryList";
 import { Route, Switch, Redirect } from "react-router-native";
 import SignIn from "./SignIn";
+import theme from "../theme";
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#e1e4e8",
+    backgroundColor: theme.colors.backgroundColor,
     flexGrow: 1,
     flexShrink: 1,
   },

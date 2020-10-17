@@ -3,22 +3,20 @@ import { Image, StyleSheet, View } from "react-native";
 import theme from "../../theme";
 import ListItemStatistics from "./ListItemStatistics";
 import Text from "../Text";
+import Container from "../Container";
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "white",
-  },
   flexParent: {
     flexDirection: "row"
   },
   image: {
     width: 50,
     height: 50,
-    margin: 15,
+    marginRight: 20,
     borderRadius: 5
   },
   name: {
-    marginTop: 15
+    // marginTop: 15
   },
   description: {
     marginTop: 5,
@@ -35,7 +33,7 @@ const styles = StyleSheet.create({
 
 const ListItem = ({ item }) => {
   return (
-    <View style={styles.container}>
+    <Container>
       <View style={styles.flexParent}>
         <Image source={{ uri: item.ownerAvatarUrl }} style={styles.image} />
         <View>
@@ -48,7 +46,7 @@ const ListItem = ({ item }) => {
       </View>
 
       <ListItemStatistics item={item} />
-    </View>
+    </Container>
   );
 };
 
