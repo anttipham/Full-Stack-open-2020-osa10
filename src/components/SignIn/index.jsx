@@ -2,7 +2,6 @@ import { Formik } from "formik";
 import React from "react";
 import TextButton from "../TextButton";
 import FormikTextInput from "../FormikTextInput";
-import Text from "../Text";
 import Container from "../Container";
 
 const SignIn = () => {
