@@ -17,8 +17,8 @@ const TabText = ({ path, children }) => {
         component={Text}
         fontSize="heading"
         color="white"
-        style={styles.tabText
-      }>
+        style={styles.tabText}
+      >
         {children}
       </Link>
     </TouchableWithoutFeedback>
