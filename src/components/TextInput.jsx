@@ -6,9 +6,7 @@ const styles = StyleSheet.create({
   text: {
     padding: 15,
     borderRadius: 5,
-    marginBottom: 20,
     borderColor: theme.colors.background,
-    color: theme.colors.background,
     borderWidth: 2
   },
   error: {
