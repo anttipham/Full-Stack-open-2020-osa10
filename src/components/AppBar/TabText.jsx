@@ -9,18 +9,17 @@ const styles = StyleSheet.create({
   },
 });
 
-const TabText = ({ path, children }) => {
+const TabText = ({ path, onPress,  ...props }) => {
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback onPress={onPress}>
       <Link
         to={path}
         component={Text}
         fontSize="heading"
         color="white"
         style={styles.tabText}
-      >
-        {children}
-      </Link>
+        {...props}
+      />
     </TouchableWithoutFeedback>
   );
 };
