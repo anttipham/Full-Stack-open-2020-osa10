@@ -7,17 +7,36 @@ import * as yup from "yup";
 import { useSignIn } from "../hooks/useSignIn";
 import { useHistory } from "react-router-native";
 
-const INITIAL_VALUES = {
-  username: "",
-  password: ""
+export const SignInContainer = ({ onSubmit }) => {
+  const initialValues = {
+    username: "",
+    password: ""
+  };
+
+  const requiredString = (errorMessage) => yup.string().required(errorMessage);
+  const validationSchema = yup.object().shape({
+    username: requiredString("Username is required"),
+    password: requiredString("Password is required"),
+  });
+
+  return (
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+    >
+      {({ handleSubmit }) => (
+        <Container>
+          <FormikTextInput placeholder="Username" name="username" />
+          <FormikTextInput placeholder="Password" name="password" secureTextEntry />
+          <TextButton onPress={handleSubmit}>
+            Sign in
+          </TextButton>
+        </Container>
+      )}
+    </Formik>
+  );
 };
-
-const requiredString = (errorMessage) => yup.string().required(errorMessage);
-
-const validationSchema = yup.object().shape({
-  username: requiredString("Username is required"),
-  password: requiredString("Password is required"),
-});
 
 const SignIn = () => {
   const [signIn] = useSignIn();
@@ -35,24 +54,7 @@ const SignIn = () => {
     }
   };
 
-  return (
-    <Formik
-      initialValues={INITIAL_VALUES}
-      validationSchema={validationSchema}
-      onSubmit={onSubmit}
-    >
-      {({ handleSubmit }) => (
-        <Container>
-          <FormikTextInput placeholder="Username" name="username" />
-          <FormikTextInput placeholder="Password" name="password" secureTextEntry />
-          <TextButton onPress={handleSubmit}>
-            Sign in
-          </TextButton>
-        </Container>
-      )}
-    </Formik>
-    // <Text>ä</Text>
-  );
+  return <SignInContainer onSubmit={onSubmit} />;
 };
 
 export default SignIn;
