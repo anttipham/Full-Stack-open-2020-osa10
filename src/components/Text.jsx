@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
   },
   alignCenter: {
     textAlign: "center",
+    textAlignVertical: "center",
   },
   colorWhite: {
     color: "white",
@@ -43,6 +44,7 @@ const Text = ({ color, fontSize, fontWeight, style, center, ...props }) => {
     fontSize === "subheading" && styles.fontSizeSubheading,
     fontSize === "heading" && styles.fontSizeHeading,
     fontWeight === "bold" && styles.fontWeightBold,
+    fontWeight === "body" && styles.fontWeightBodyText,
     style,
   ];
 

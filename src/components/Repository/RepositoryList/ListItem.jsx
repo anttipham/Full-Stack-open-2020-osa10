@@ -3,12 +3,12 @@ import { TouchableOpacity } from "react-native";
 import { useHistory } from "react-router-native";
 import RepositoryItem from "../RepositoryItem";
 
-const ListItem = ({ item }) => {
+const ListItem = ({ repository }) => {
   const history = useHistory();
 
   return (
-    <TouchableOpacity onPress={() => history.push(`/repositories/${item.id}`)}>
-      <RepositoryItem item={item} />
+    <TouchableOpacity onPress={() => history.push(`/repositories/${repository.id}`)}>
+      <RepositoryItem repository={repository} />
     </TouchableOpacity>
   );
 };
