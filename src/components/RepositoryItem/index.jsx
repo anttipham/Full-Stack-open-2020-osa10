@@ -1,19 +1,22 @@
 import React from "react";
 import Statistics from "./Statistics";
-import Container from "../Container";
+import Paper from "../Paper";
 import Info from "./Info";
 import TextButton from "../TextButton";
+import { Linking } from "react-native";
 
 const ListItem = ({ item, showGitHubLink }) => {
   return (
-    <Container testID="repositoryItem">
+    <Paper testID="repositoryItem">
       <Info item={item} />
       <Statistics item={item} />
 
       {showGitHubLink &&
-        <TextButton>Show in GitHub</TextButton>
+        <TextButton onPress={() => Linking.openURL("https://www.youtube.com/")}>
+          Show in GitHub
+        </TextButton>
       }
-    </Container>
+    </Paper>
   );
 };
 

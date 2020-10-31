@@ -2,7 +2,7 @@ import { Formik } from "formik";
 import React from "react";
 import TextButton from "./TextButton";
 import FormikTextInput from "./FormikTextInput";
-import Container from "./Container";
+import Paper from "./Paper";
 import * as yup from "yup";
 import { useSignIn } from "../hooks/useSignIn";
 import { useHistory } from "react-router-native";
@@ -26,13 +26,13 @@ export const SignInContainer = ({ onSubmit }) => {
       onSubmit={onSubmit}
     >
       {({ handleSubmit }) => (
-        <Container>
+        <Paper>
           <FormikTextInput placeholder="Username" name="username" />
           <FormikTextInput placeholder="Password" name="password" secureTextEntry />
           <TextButton onPress={handleSubmit}>
             Sign in
           </TextButton>
-        </Container>
+        </Paper>
       )}
     </Formik>
   );

@@ -8,10 +8,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const Container = ({ style, ...props }) => {
+const Paper = ({ style, ...props }) => {
   const textInputStyle = [styles.container, style];
 
   return <View style={textInputStyle} {...props} />;
 };
 
-export default Container;
+export default Paper;
