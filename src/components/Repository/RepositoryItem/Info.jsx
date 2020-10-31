@@ -1,34 +1,30 @@
 import React from "react";
-import Text from "../Text";
+import Text from "../../Text";
 import { Image, StyleSheet, View } from "react-native";
-import theme from "../../theme";
+import theme from "../../../theme";
 
 const styles = StyleSheet.create({
   flexParent: {
     flexDirection: "row",
-    // flexWrap: "wrap",
   },
   image: {
-    width: 50,
-    height: 50,
+    width: theme.iconSize,
+    height: theme.iconSize,
     marginRight: 20,
     borderRadius: 5,
     flexBasis: 50,
   },
   infoParent: {
-    flexDirection: "column",
     flex: 1,
+    alignItems: "flex-start",
   },
   name: {
-    alignSelf: "flex-start",
   },
   description: {
-    alignSelf: "flex-start",
     marginTop: 5,
     marginBottom: 10,
   },
   languageView: {
-    alignSelf: "flex-start",
     backgroundColor: theme.colors.primary,
     padding: 7,
     borderRadius: 7,

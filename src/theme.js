@@ -15,6 +15,7 @@ switch (Platform.OS) {
 
 const theme = {
   colors: {
+    // #4d4d4d
     textPrimary: "#24292e",
     textSecondary: "#586069",
     primary: "#0366d6",
@@ -34,6 +35,7 @@ const theme = {
     normal: "400",
     bold: "700",
   },
+  iconSize: 50,
 };
 
 export default theme;

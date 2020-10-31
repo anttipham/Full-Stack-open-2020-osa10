@@ -1,15 +1,19 @@
 import React from "react";
 import Statistics from "./Statistics";
-import Paper from "../Paper";
+import Paper from "../../Paper";
 import Info from "./Info";
-import TextButton from "../TextButton";
+import TextButton from "../../TextButton";
 import { Linking } from "react-native";
 
-const ListItem = ({ item, showGitHubLink }) => {
+const ListItem = ({ repository, showGitHubLink }) => {
+  if (showGitHubLink && !repository.url) {
+    throw new Error("YOU IDIOT, YOU FORGOT TO ADD item.url!");
+  }
+
   return (
     <Paper testID="repositoryItem">
-      <Info item={item} />
-      <Statistics item={item} />
+      <Info item={repository} />
+      <Statistics item={repository} />
 
       {showGitHubLink &&
         <TextButton onPress={() => Linking.openURL("https://www.youtube.com/")}>
