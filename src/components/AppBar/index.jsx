@@ -3,6 +3,7 @@ import React from "react";
 import { View, StyleSheet, ScrollView, StatusBar } from "react-native";
 import { GET_USER } from "../../graphql/queries";
 import useAuthStorage from "../../hooks/useAuthStorage";
+import theme from "../../theme";
 import TabText from "./TabText";
 // import Constants from "expo-constants";
 
@@ -10,7 +11,7 @@ const styles = StyleSheet.create({
   container: {
     // My statusbar doesn't seem to need the padding
     // paddingTop: Constants.statusBarHeight,
-    backgroundColor: "#24292e",
+    backgroundColor: theme.colors.appBar,
     flexDirection: "row",
   },
 });
