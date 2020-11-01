@@ -6,6 +6,7 @@ import { Route, Switch, Redirect } from "react-router-native";
 import SignIn from "./SignIn";
 import theme from "../theme";
 import SingleRepository from "./Repository/SingleRepository";
+import Review from "./Review";
 
 const styles = StyleSheet.create({
   container: {
@@ -22,6 +23,7 @@ const Main = () => {
 
       <Switch>
         <Route path="/login" component={SignIn} exact />
+        <Route path="/createreview" component={Review} exact />
         <Route path="/repositories/:id" component={SingleRepository} exact />
         <Route path="/repositories" component={RepositoryList} exact />
         <Redirect to="/repositories" />

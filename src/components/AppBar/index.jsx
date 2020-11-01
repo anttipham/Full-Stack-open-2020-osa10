@@ -17,18 +17,19 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-  const { data, loading } = useQuery(GET_USER, {
+  const { data, loading } = useQuery(GET_USER/* , {
     fetchPolicy: "cache-and-network",
-  });
-  // console.log("loading", loading);
-  // loading || console.log("user", data.authorizedUser);
+  } */);
 
   const authStorage = useAuthStorage();
   const apolloClient = useApolloClient();
+
   const logout = async () => {
     await authStorage.removeAccessToken();
     apolloClient.resetStore();
   };
+
+  const signedIn = !loading && data.authorizedUser;
 
   return (
     <View style={styles.container}>
@@ -36,9 +37,16 @@ const AppBar = () => {
       <ScrollView horizontal>
         <TabText path="/">Repositories</TabText>
 
-        {loading || !data.authorizedUser
-          ? <TabText path="/login">Sign in</TabText>
-          : <TabText onPress={logout}>Sign out</TabText>
+        {signedIn &&
+          <>
+            <TabText path="/createreview">Create a review</TabText>
+            <TabText onPress={logout}>Sign out</TabText>
+          </>
+        }
+        {!signedIn &&
+          <>
+            <TabText path="/login">Sign in</TabText>
+          </>
         }
       </ScrollView>
     </View>

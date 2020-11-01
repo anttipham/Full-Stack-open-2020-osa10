@@ -3,9 +3,12 @@ import React from "react";
 import TextButton from "./TextButton";
 import FormikTextInput from "./FormikTextInput";
 import Paper from "./Paper";
-import * as yup from "yup";
 import { useSignIn } from "../hooks/useSignIn";
 import { useHistory } from "react-router-native";
+import yupFormValidation, { requiredString } from "../utils/yupFormValidation";
+
+const USERNAME_REQUIRED = "Username is required";
+const PASSWORD_REQUIRED = "Password is required";
 
 export const SignInContainer = ({ onSubmit }) => {
   const initialValues = {
@@ -13,10 +16,9 @@ export const SignInContainer = ({ onSubmit }) => {
     password: ""
   };
 
-  const requiredString = (errorMessage) => yup.string().required(errorMessage);
-  const validationSchema = yup.object().shape({
-    username: requiredString("Username is required"),
-    password: requiredString("Password is required"),
+  const validationSchema = yupFormValidation({
+    username: requiredString(USERNAME_REQUIRED),
+    password: requiredString(PASSWORD_REQUIRED),
   });
 
   return (
