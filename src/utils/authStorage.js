@@ -1,8 +1,16 @@
 import AsyncStorage from "@react-native-community/async-storage";
+import Constants from "expo-constants";
 
 export default class AuthStorage {
   constructor (namespace = "auth") {
     this.key = `${namespace}:token`;
+
+    // debug
+    if (Constants.manifest.extra.env === "development") {
+      AsyncStorage.getItem(this.key).then((value) => {
+        console.log(value);
+      });
+    }
   }
 
   /**

@@ -15,9 +15,9 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const SingleRepository = () => {
   const { id } = useParams();
-  const { repository, loading } = useRepository(id);
+  const { repository } = useRepository(id);
 
-  if (loading) {
+  if (!repository) {
     return null;
   }
   return (
