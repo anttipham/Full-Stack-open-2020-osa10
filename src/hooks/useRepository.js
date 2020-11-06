@@ -1,15 +1,48 @@
 import { useQuery } from "@apollo/react-hooks";
+import { useEffect, useState } from "react";
 import { GET_REPOSITORY } from "../graphql/queries";
 
-const useRepository = (id) => {
-  const { data, loading } = useQuery(GET_REPOSITORY, {
+const useRepository = (id, fetchAmount = 2) => {
+  const [repository, setRepository] = useState(null);
+  const { data, loading, fetchMore } = useQuery(GET_REPOSITORY, {
     fetchPolicy: "cache-and-network",
-    variables: { id }
+    variables: { id, first: fetchAmount },
   });
-  // console.log(data);
 
-  let repository = null;
-  if (!loading) {
+  const handleFetchMore = async () => {
+    if (loading || !data || !data.repository.reviews.pageInfo.hasNextPage) {
+      return;
+    }
+
+    await fetchMore({
+      variables: {
+        id,
+        first: fetchAmount,
+        after: data.repository.reviews.pageInfo.endCursor
+      },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        const nextResult = {
+          repository: {
+            ...fetchMoreResult.repository,
+            reviews: {
+              ...fetchMoreResult.repository.reviews,
+              edges: [
+              ...previousResult.repository.reviews.edges,
+              ...fetchMoreResult.repository.reviews.edges,
+              ],
+            },
+          },
+        };
+
+        return nextResult;
+      },
+    });
+  };
+
+  useEffect(() => {
+    if (!data) {
+      return;
+    }
     const reviews = data.repository.reviews.edges.map(edge => {
       const { node: review } = edge;
       return {
@@ -18,14 +51,14 @@ const useRepository = (id) => {
       };
     });
 
-    repository = {
+    setRepository({
       ...data.repository,
       reviews
-    };
-  }
+    });
+  }, [data]);
 
-  console.log(repository);
   return {
+    fetchMore: handleFetchMore,
     repository,
     loading
   };

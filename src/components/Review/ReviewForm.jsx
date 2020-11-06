@@ -5,7 +5,7 @@ import yupFormValidation, { requiredString, requiredNumber } from "../../utils/y
 import FormikTextInput from "../FormikTextInput";
 import Paper from "../Paper";
 import TextButton from "../TextButton";
-import Constants from "expo-constants";
+// import Constants from "expo-constants";
 
 const OWNER_NAME_REQUIRED = "Repository owner name is required";
 const REPOSITORY_NAME_REQUIRED = "Repository name is required";
@@ -19,14 +19,14 @@ const ReviewForm = ({ onSubmit }) => {
     rating: "",
     text: ""
   };
-  if (Constants.manifest.extra.env === "development") {
-    initialValues = {
-      ownerName: "rzwitserloot",
-      repositoryName: "lombok",
-      rating: "100",
-      text: ""
-    };
-  }
+  // if (Constants.manifest.extra.env === "development") {
+  //   initialValues = {
+  //     ownerName: "rzwitserloot",
+  //     repositoryName: "lombok",
+  //     rating: "100",
+  //     text: ""
+  //   };
+  // }
 
   const validationSchema = yupFormValidation({
     ownerName: requiredString(OWNER_NAME_REQUIRED),
@@ -59,6 +59,7 @@ const ReviewForm = ({ onSubmit }) => {
           />
           <FormikTextInput
             placeholder="Review"
+            autoCapitalize="sentences"
             name="text"
           />
           <TextButton onPress={handleSubmit}>

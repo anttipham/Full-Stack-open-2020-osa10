@@ -26,3 +26,10 @@ export const REVIEW_DETAILS = gql`
     }
   }
 `;
+
+export const PAGEINFO_VALUES_FOR_PAGINATION = gql`
+  fragment PageInfoValuesForPagination on PageInfo {
+    endCursor
+    hasNextPage
+  }
+`;

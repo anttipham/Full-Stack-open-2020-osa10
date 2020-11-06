@@ -2,9 +2,7 @@ import { gql } from "apollo-boost";
 
 export const LOGIN = gql`
   mutation Login($username: String!, $password: String!) {
-    authorize(
-      credentials: { username: $username, password: $password }
-    ) {
+    authorize(credentials: { username: $username, password: $password }) {
       accessToken
     }
   }
@@ -22,4 +20,12 @@ export const CREATE_REVIEW = gql`
       repositoryId
     }
   }
+`;
+
+export const CREATE_USER = gql`
+ mutation CreateUser($username: String!, $password: String!) {
+  createUser(user: { username: $username, password: $password }) {
+    id
+  }
+ }
 `;

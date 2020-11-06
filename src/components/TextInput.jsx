@@ -17,7 +17,13 @@ const styles = StyleSheet.create({
 const TextInput = ({ style, error, ...props }) => {
   const textInputStyle = [styles.text, style, error && styles.error];
 
-  return <NativeTextInput style={textInputStyle} {...props} />;
+  return (
+    <NativeTextInput
+      autoCapitalize="none"
+      style={textInputStyle}
+      {...props}
+    />
+  );
 };
 
 export default TextInput;
