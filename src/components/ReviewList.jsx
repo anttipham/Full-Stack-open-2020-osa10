@@ -11,7 +11,7 @@ const ReviewList = () => {
     variables: { includeReviews: true }
   });
 
-  if (loading || !data) {
+  if (loading || !data || !data.authorizedUser) {
     return null;
   }
   const reviews = data.authorizedUser.reviews.edges.map(edge => ({
