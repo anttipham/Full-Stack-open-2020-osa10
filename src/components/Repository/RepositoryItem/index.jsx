@@ -16,7 +16,7 @@ const ListItem = ({ repository, showGitHubLink }) => {
       <Statistics item={repository} />
 
       {showGitHubLink &&
-        <TextButton onPress={() => Linking.openURL("https://www.youtube.com/")}>
+        <TextButton onPress={() => Linking.openURL(repository.url)}>
           Show in GitHub
         </TextButton>
       }

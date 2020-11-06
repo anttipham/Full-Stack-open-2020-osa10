@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Review = ({ review }) => {
+const Review = ({ item: review }) => {
   return (
     <Paper style={styles.flexParent}>
       <View style={styles.rating}>

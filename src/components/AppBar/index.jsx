@@ -17,9 +17,9 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-  const { data, loading } = useQuery(GET_USER/* , {
-    fetchPolicy: "cache-and-network",
-  } */);
+  const { data, loading } = useQuery(GET_USER, {
+    fetchPolicy: "network-only",
+  });
 
   const authStorage = useAuthStorage();
   const apolloClient = useApolloClient();
@@ -29,7 +29,7 @@ const AppBar = () => {
     apolloClient.resetStore();
   };
 
-  const signedIn = !loading && data.authorizedUser;
+  const signedIn = !loading && data && data.authorizedUser;
 
   return (
     <View style={styles.container}>
@@ -40,12 +40,14 @@ const AppBar = () => {
         {signedIn &&
           <>
             <TabText path="/createreview">Create a review</TabText>
+            <TabText path="/reviews">My reviews</TabText>
             <TabText onPress={logout}>Sign out</TabText>
           </>
         }
         {!signedIn &&
           <>
-            <TabText path="/login">Sign in</TabText>
+            <TabText path="/signin">Sign in</TabText>
+            <TabText path="/signup">Sign up</TabText>
           </>
         }
       </ScrollView>
